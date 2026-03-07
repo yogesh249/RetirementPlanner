@@ -1,0 +1,4 @@
+com.retirement.planner.test.app-androidTest-0 C:\Users\yoges\Downloads\RetirementPlanner\RetirementPlanner\app\build\generated\res\resValues\androidTest\debug
+com.retirement.planner.test.app-mergeDebugAndroidTestResources-1 C:\Users\yoges\Downloads\RetirementPlanner\RetirementPlanner\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.retirement.planner.test.app-mergeDebugAndroidTestResources-2 C:\Users\yoges\Downloads\RetirementPlanner\RetirementPlanner\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.retirement.planner.test.app-merged_res-3 C:\Users\yoges\Downloads\RetirementPlanner\RetirementPlanner\app\build\intermediates\merged_res\debugAndroidTest

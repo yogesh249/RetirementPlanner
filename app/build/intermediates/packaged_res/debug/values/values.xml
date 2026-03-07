@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_dark">#1E3A8A</color>
+    <color name="blue_primary">#1E40AF</color>
+    <color name="gray_light">#F3F4F6</color>
+    <color name="gray_medium">#6B7280</color>
+    <color name="green">#059669</color>
+    <color name="red">#DC2626</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Retirement Planner</string>
+    <style name="Theme.RetirementPlanner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#1E40AF</item>
+        <item name="colorPrimaryVariant">#1E3A8A</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#059669</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:statusBarColor">#1E3A8A</item>
+    </style>
+</resources>
