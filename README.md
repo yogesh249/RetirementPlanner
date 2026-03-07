@@ -2,6 +2,13 @@
 
 A financial planning app to calculate the monthly SIP contribution needed to reach your retirement corpus target.
 
+
+## Screenshots
+
+![Screenshot 1](app/src/main/res/images/image1.jpeg)
+![Screenshot 2](app/src/main/res/images/image2.jpeg)
+![Screenshot 3](app/src/main/res/images/image3.jpeg)
+
 ---
 
 ## 📱 Features
