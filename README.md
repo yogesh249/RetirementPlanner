@@ -1,6 +1,7 @@
 # 🎯 Retirement Planner — Android App
 
 A financial planning app to calculate the monthly SIP contribution needed to reach your retirement corpus target.
+You are free to use and distribute as long as you do not remove my name and credentials from the app.
 
 
 ## Screenshots
