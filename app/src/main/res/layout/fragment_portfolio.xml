@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4F8"
+    android:background="@color/screen_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -23,7 +23,7 @@
                 android:text="🕒 " android:textSize="14sp" />
             <TextView android:id="@+id/tvLastSaved" android:layout_width="0dp"
                 android:layout_height="wrap_content" android:layout_weight="1"
-                android:textColor="#065F46" android:textSize="12sp" />
+                android:textColor="@color/total_green_text" android:textSize="12sp" />
             <Button android:id="@+id/btnClearData" android:layout_width="wrap_content"
                 android:layout_height="32dp" android:text="Clear" android:textSize="11sp"
                 android:textColor="#DC2626" android:background="@drawable/button_clear_bg"
@@ -38,11 +38,11 @@
                 android:orientation="vertical" android:padding="16dp">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="👤 Personal Details" android:textColor="#1E40AF"
+                    android:text="👤 Personal Details" android:textColor="@color/total_blue_text"
                     android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="12dp" />
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Date of Birth" android:textColor="#374151" android:textSize="13sp"
+                    android:text="Date of Birth" android:textColor="@color/text_secondary" android:textSize="13sp"
                     android:layout_marginBottom="4dp" />
                 <EditText android:id="@+id/etDOB" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Tap to select date"
@@ -51,7 +51,7 @@
                     android:textSize="14sp" android:layout_marginBottom="12dp" />
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Retirement Age" android:textColor="#374151" android:textSize="13sp"
+                    android:text="Retirement Age" android:textColor="@color/text_secondary" android:textSize="13sp"
                     android:layout_marginBottom="4dp" />
                 <EditText android:id="@+id/etRetirementAge" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="60" android:inputType="number"
@@ -60,7 +60,7 @@
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Target Corpus at Retirement (₹ in future value)"
-                    android:textColor="#374151" android:textSize="13sp" android:layout_marginBottom="4dp" />
+                    android:textColor="@color/text_secondary" android:textSize="13sp" android:layout_marginBottom="4dp" />
                 <EditText android:id="@+id/etTargetCorpus" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="e.g. 50000000"
                     android:inputType="numberDecimal" android:background="@drawable/input_bg"
@@ -76,21 +76,21 @@
                 android:orientation="vertical" android:padding="16dp">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="💼 Individual Portfolio" android:textColor="#1E40AF"
+                    android:text="💼 Individual Portfolio" android:textColor="@color/total_blue_text"
                     android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="2dp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Enter current corpus and expected annual growth rate %"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="12dp" />
+                    android:textColor="@color/text_hint" android:textSize="11sp" android:layout_marginBottom="12dp" />
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:layout_marginBottom="8dp">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="Asset" android:textColor="#9CA3AF" android:textSize="11sp" />
+                        android:layout_weight="2" android:text="Asset" android:textColor="@color/text_muted" android:textSize="11sp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2.5" android:text="Corpus (₹)" android:textColor="#9CA3AF"
+                        android:layout_weight="2.5" android:text="Corpus (₹)" android:textColor="@color/text_muted"
                         android:textSize="11sp" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Rate %" android:textColor="#9CA3AF"
+                        android:layout_weight="1" android:text="Rate %" android:textColor="@color/text_muted"
                         android:textSize="11sp" android:gravity="center" />
                 </LinearLayout>
 
@@ -112,21 +112,21 @@
                 android:orientation="vertical" android:padding="16dp">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="🏛️ HUF Portfolio" android:textColor="#1E40AF"
+                    android:text="🏛️ HUF Portfolio" android:textColor="@color/total_blue_text"
                     android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="2dp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Enter current corpus and expected annual growth rate %"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="12dp" />
+                    android:textColor="@color/text_hint" android:textSize="11sp" android:layout_marginBottom="12dp" />
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:layout_marginBottom="8dp">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="Asset" android:textColor="#9CA3AF" android:textSize="11sp" />
+                        android:layout_weight="2" android:text="Asset" android:textColor="@color/text_muted" android:textSize="11sp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2.5" android:text="Corpus (₹)" android:textColor="#9CA3AF"
+                        android:layout_weight="2.5" android:text="Corpus (₹)" android:textColor="@color/text_muted"
                         android:textSize="11sp" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Rate %" android:textColor="#9CA3AF"
+                        android:layout_weight="1" android:text="Rate %" android:textColor="@color/text_muted"
                         android:textSize="11sp" android:gravity="center" />
                 </LinearLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4F8"
+    android:background="@color/screen_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -20,7 +20,7 @@
                 android:orientation="vertical" android:padding="16dp">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="⚙️ Assumptions" android:textColor="#1E40AF"
+                    android:text="⚙️ Assumptions" android:textColor="@color/total_blue_text"
                     android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="12dp" />
 
                 <!-- Retirement Age -->
@@ -28,7 +28,7 @@
                     android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Retirement age" android:textColor="#374151" android:textSize="13sp" />
+                            android:text="Retirement age" android:textColor="@color/text_secondary" android:textSize="13sp" />
                     </LinearLayout>
                     <EditText android:id="@+id/etExpRetirementAge"
                         android:layout_width="64dp" android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="yrs" android:textColor="#6B7280" android:textSize="12sp" />
+                        android:text="yrs" android:textColor="@color/text_hint" android:textSize="12sp" />
                 </LinearLayout>
 
                 <!-- Life Expectancy -->
@@ -44,7 +44,7 @@
                     android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Life expectancy" android:textColor="#374151" android:textSize="13sp" />
+                            android:text="Life expectancy" android:textColor="@color/text_secondary" android:textSize="13sp" />
                     </LinearLayout>
                     <EditText android:id="@+id/etLifeExpectancy"
                         android:layout_width="64dp" android:layout_height="wrap_content"
@@ -52,20 +52,20 @@
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="yrs" android:textColor="#6B7280" android:textSize="12sp" />
+                        android:text="yrs" android:textColor="@color/text_hint" android:textSize="12sp" />
                 </LinearLayout>
 
                 <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="#E5E7EB" android:layout_marginBottom="10dp" />
+                    android:background="@color/divider" android:layout_marginBottom="10dp" />
 
                 <!-- Inflation Rate -->
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Inflation rate" android:textColor="#374151" android:textSize="13sp" />
+                            android:text="Inflation rate" android:textColor="@color/text_secondary" android:textSize="13sp" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="For projecting expenses forward" android:textColor="#9CA3AF" android:textSize="11sp" />
+                            android:text="For projecting expenses forward" android:textColor="@color/text_muted" android:textSize="11sp" />
                     </LinearLayout>
                     <EditText android:id="@+id/etExpInflation"
                         android:layout_width="64dp" android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="%" android:textColor="#6B7280" android:textSize="12sp" />
+                        android:text="%" android:textColor="@color/text_hint" android:textSize="12sp" />
                 </LinearLayout>
 
                 <!-- Post-retirement return -->
@@ -81,9 +81,9 @@
                     android:orientation="horizontal" android:gravity="center_vertical">
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Post-retirement return" android:textColor="#374151" android:textSize="13sp" />
+                            android:text="Post-retirement return" android:textColor="@color/text_secondary" android:textSize="13sp" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Expected return on invested corpus" android:textColor="#9CA3AF" android:textSize="11sp" />
+                            android:text="Expected return on invested corpus" android:textColor="@color/text_muted" android:textSize="11sp" />
                     </LinearLayout>
                     <EditText android:id="@+id/etPostRetirementReturn"
                         android:layout_width="64dp" android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="%" android:textColor="#6B7280" android:textSize="12sp" />
+                        android:text="%" android:textColor="@color/text_hint" android:textSize="12sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -106,24 +106,24 @@
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="💸 Current Monthly Expenses"
-                    android:textColor="#1E40AF" android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/total_blue_text" android:textSize="16sp" android:textStyle="bold"
                     android:layout_marginBottom="2dp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Uncheck expenses that won't exist at retirement"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="10dp" />
+                    android:textColor="@color/text_hint" android:textSize="11sp" android:layout_marginBottom="10dp" />
 
                 <!-- Column Headers -->
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:layout_marginBottom="6dp">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="2.5" android:text="Expense"
-                        android:textColor="#9CA3AF" android:textSize="11sp" />
+                        android:textColor="@color/text_muted" android:textSize="11sp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1.8" android:text="Amount (₹)"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="end"
+                        android:textColor="@color/text_muted" android:textSize="11sp" android:gravity="end"
                         android:layout_marginEnd="4dp" />
                     <TextView android:layout_width="40dp" android:layout_height="wrap_content"
-                        android:text="At 60?" android:textColor="#9CA3AF"
+                        android:text="At 60?" android:textColor="@color/text_muted"
                         android:textSize="11sp" android:gravity="center" />
                 </LinearLayout>
 
@@ -139,7 +139,7 @@
                     android:background="@drawable/add_row_bg"
                     android:padding="10dp" android:layout_marginTop="8dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="+ Add expense" android:textColor="#1E40AF"
+                        android:text="+ Add expense" android:textColor="@color/total_blue_text"
                         android:textSize="12sp" android:textStyle="bold" />
                 </LinearLayout>
 
@@ -149,10 +149,10 @@
                     android:padding="10dp" android:layout_marginTop="8dp" android:gravity="center_vertical">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:text="Continuing at retirement"
-                        android:textColor="#1E40AF" android:textSize="12sp" />
+                        android:textColor="@color/total_blue_text" android:textSize="12sp" />
                     <TextView android:id="@+id/tvCurrentTotal"
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="₹0 / mo" android:textColor="#1E40AF"
+                        android:text="₹0 / mo" android:textColor="@color/total_blue_text"
                         android:textSize="13sp" android:textStyle="bold" />
                 </LinearLayout>
 
@@ -168,20 +168,20 @@
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="🏥 Post-Retirement Expenses"
-                    android:textColor="#065F46" android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/total_green_text" android:textSize="16sp" android:textStyle="bold"
                     android:layout_marginBottom="2dp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="New expenses after retirement — enter in today's value"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="10dp" />
+                    android:textColor="@color/text_hint" android:textSize="11sp" android:layout_marginBottom="10dp" />
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:layout_marginBottom="6dp">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="2.5" android:text="Expense"
-                        android:textColor="#9CA3AF" android:textSize="11sp" />
+                        android:textColor="@color/text_muted" android:textSize="11sp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1.8" android:text="Amount (₹)"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="end" />
+                        android:textColor="@color/text_muted" android:textSize="11sp" android:gravity="end" />
                 </LinearLayout>
 
                 <LinearLayout android:id="@+id/containerPostExpenses"
@@ -194,7 +194,7 @@
                     android:background="@drawable/add_row_green_bg"
                     android:padding="10dp" android:layout_marginTop="8dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="+ Add post-retirement expense" android:textColor="#065F46"
+                        android:text="+ Add post-retirement expense" android:textColor="@color/total_green_text"
                         android:textSize="12sp" android:textStyle="bold" />
                 </LinearLayout>
 
@@ -203,10 +203,10 @@
                     android:padding="10dp" android:layout_marginTop="8dp" android:gravity="center_vertical">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:text="Post-retirement additions"
-                        android:textColor="#065F46" android:textSize="12sp" />
+                        android:textColor="@color/total_green_text" android:textSize="12sp" />
                     <TextView android:id="@+id/tvPostTotal"
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="₹0 / mo" android:textColor="#065F46"
+                        android:text="₹0 / mo" android:textColor="@color/total_green_text"
                         android:textSize="13sp" android:textStyle="bold" />
                 </LinearLayout>
 

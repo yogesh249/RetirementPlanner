@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Adaptive colors - dark mode overrides -->
+    <color name="screen_background">#0F172A</color>
+    <color name="card_background">#1E293B</color>
+    <color name="input_background">#0F172A</color>
+    <color name="input_stroke">#334155</color>
+    <color name="text_primary">#F1F5F9</color>
+    <color name="text_secondary">#CBD5E1</color>
+    <color name="text_hint">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+    <color name="divider">#334155</color>
+    <color name="row_background">#1E293B</color>
+    <color name="row_stroke">#334155</color>
+    <color name="unchecked_row_bg">#2D1B1B</color>
+    <color name="unchecked_row_stroke">#7F1D1D</color>
+    <color name="total_blue_bg">#1E3A5F</color>
+    <color name="total_blue_stroke">#1E40AF</color>
+    <color name="total_blue_text">#93C5FD</color>
+    <color name="total_green_bg">#064E3B</color>
+    <color name="total_green_stroke">#059669</color>
+    <color name="total_green_text">#6EE7B7</color>
+    <color name="add_blue_bg">#1E3A5F</color>
+    <color name="add_green_bg">#064E3B</color>
+    <color name="banner_bg">#064E3B</color>
+    <color name="banner_stroke">#059669</color>
+    <color name="banner_text">#6EE7B7</color>
+</resources>
