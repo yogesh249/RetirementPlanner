@@ -1,194 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4F8"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="#F0F4F8">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/header_bg"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="0dp">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/header_bg"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginBottom="16dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="🎯 Retirement Planner" android:textColor="#FFFFFF"
-                android:textSize="24sp" android:textStyle="bold" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Plan your financial freedom" android:textColor="#E0E7FF"
-                android:textSize="14sp" android:layout_marginTop="4dp" />
-        </LinearLayout>
-
-        <!-- Last Saved Banner -->
-        <LinearLayout
-            android:id="@+id/bannerLastSaved"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/banner_bg"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="gone">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🕒 "
-                android:textSize="14sp" />
-            <TextView
-                android:id="@+id/tvLastSaved"
+            android:gravity="center_vertical">
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#065F46"
-                android:textSize="12sp" />
-            <Button
-                android:id="@+id/btnClearData"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:text="Clear"
-                android:textSize="11sp"
-                android:textColor="#DC2626"
-                android:background="@drawable/button_clear_bg"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp" />
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🎯 Retirement Planner" android:textColor="#FFFFFF"
+                    android:textSize="22sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Plan your financial freedom" android:textColor="#E0E7FF"
+                    android:textSize="13sp" android:layout_marginTop="2dp" android:layout_marginBottom="12dp" />
+            </LinearLayout>
+            <Button android:id="@+id/btnAbout"
+                android:layout_width="wrap_content" android:layout_height="32dp"
+                android:text="About" android:textSize="11sp" android:textColor="#FFFFFF"
+                android:background="@drawable/button_secondary_about_bg"
+                android:paddingStart="12dp" android:paddingEnd="12dp" />
         </LinearLayout>
 
-        <!-- Personal Details Card -->
-        <androidx.cardview.widget.CardView android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
-            app:cardElevation="4dp" android:layout_marginBottom="12dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical" android:padding="16dp">
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="👤 Personal Details" android:textColor="#1E40AF"
-                    android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Date of Birth" android:textColor="#374151" android:textSize="13sp"
-                    android:layout_marginBottom="4dp" />
-                <EditText android:id="@+id/etDOB" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Tap to select date"
-                    android:focusable="false" android:clickable="true"
-                    android:background="@drawable/input_bg" android:padding="12dp"
-                    android:textSize="14sp" android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Retirement Age" android:textColor="#374151" android:textSize="13sp"
-                    android:layout_marginBottom="4dp" />
-                <EditText android:id="@+id/etRetirementAge" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="60" android:inputType="number"
-                    android:background="@drawable/input_bg" android:padding="12dp"
-                    android:textSize="14sp" android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Target Corpus at Retirement (₹ in future value)"
-                    android:textColor="#374151" android:textSize="13sp" android:layout_marginBottom="4dp" />
-                <EditText android:id="@+id/etTargetCorpus" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="e.g. 50000000"
-                    android:inputType="numberDecimal" android:background="@drawable/input_bg"
-                    android:padding="12dp" android:textSize="14sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Individual Portfolio Card -->
-        <androidx.cardview.widget.CardView android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
-            app:cardElevation="4dp" android:layout_marginBottom="12dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical" android:padding="16dp">
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="💼 Individual Portfolio" android:textColor="#1E40AF"
-                    android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="2dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Enter current corpus and expected annual growth rate %"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="12dp" />
-
-                <!-- Column Headers -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:layout_marginBottom="8dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="Asset"
-                        android:textColor="#9CA3AF" android:textSize="11sp" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2.5" android:text="Corpus (₹)"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:layout_marginEnd="6dp" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Rate %"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="center" />
-                </LinearLayout>
-
-                <include android:id="@+id/rowNPS" layout="@layout/asset_row" />
-                <include android:id="@+id/rowPPF" layout="@layout/asset_row" />
-                <include android:id="@+id/rowEPF" layout="@layout/asset_row" />
-                <include android:id="@+id/rowMF" layout="@layout/asset_row" />
-                <include android:id="@+id/rowStocks" layout="@layout/asset_row" />
-                <include android:id="@+id/rowSavingsBank" layout="@layout/asset_row" />
-                <include android:id="@+id/rowCrypto" layout="@layout/asset_row" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- HUF Portfolio Card -->
-        <androidx.cardview.widget.CardView android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
-            app:cardElevation="4dp" android:layout_marginBottom="16dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical" android:padding="16dp">
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="🏛️ HUF Portfolio" android:textColor="#1E40AF"
-                    android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="2dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Enter current corpus and expected annual growth rate %"
-                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="12dp" />
-
-                <!-- Column Headers -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:layout_marginBottom="8dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="Asset"
-                        android:textColor="#9CA3AF" android:textSize="11sp" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2.5" android:text="Corpus (₹)"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:layout_marginEnd="6dp" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Rate %"
-                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="center" />
-                </LinearLayout>
-
-                <include android:id="@+id/rowHUFBank" layout="@layout/asset_row" />
-                <include android:id="@+id/rowHUFStocks" layout="@layout/asset_row" />
-                <include android:id="@+id/rowHUFMF" layout="@layout/asset_row" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Calculate Button -->
-        <Button android:id="@+id/btnCalculate" android:layout_width="match_parent"
-            android:layout_height="56dp" android:text="Calculate Monthly Contribution"
-            android:textSize="16sp" android:textStyle="bold" android:background="@drawable/button_bg"
-            android:textColor="#FFFFFF" android:layout_marginBottom="12dp" />
-
-        <!-- About Button -->
-        <Button android:id="@+id/btnAbout" android:layout_width="match_parent"
-            android:layout_height="44dp" android:text="ℹ️  About &amp; Support the Creator"
-            android:textSize="13sp" android:background="@drawable/button_secondary_bg"
-            android:textColor="#1E40AF" android:layout_marginBottom="24dp" />
-
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/tab_text_color"
+            app:tabIndicatorColor="#FFFFFF"
+            app:tabIndicatorHeight="3dp"
+            app:tabRippleColor="@null"
+            android:background="@android:color/transparent" />
     </LinearLayout>
-</ScrollView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Assumptions Card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+            app:cardElevation="4dp" android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="⚙️ Assumptions" android:textColor="#1E40AF"
+                    android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="12dp" />
+
+                <!-- Retirement Age -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Retirement age" android:textColor="#374151" android:textSize="13sp" />
+                    </LinearLayout>
+                    <EditText android:id="@+id/etExpRetirementAge"
+                        android:layout_width="64dp" android:layout_height="wrap_content"
+                        android:hint="60" android:inputType="number"
+                        android:background="@drawable/input_bg" android:padding="10dp"
+                        android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="yrs" android:textColor="#6B7280" android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Life Expectancy -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Life expectancy" android:textColor="#374151" android:textSize="13sp" />
+                    </LinearLayout>
+                    <EditText android:id="@+id/etLifeExpectancy"
+                        android:layout_width="64dp" android:layout_height="wrap_content"
+                        android:hint="80" android:inputType="number"
+                        android:background="@drawable/input_bg" android:padding="10dp"
+                        android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="yrs" android:textColor="#6B7280" android:textSize="12sp" />
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="#E5E7EB" android:layout_marginBottom="10dp" />
+
+                <!-- Inflation Rate -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Inflation rate" android:textColor="#374151" android:textSize="13sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="For projecting expenses forward" android:textColor="#9CA3AF" android:textSize="11sp" />
+                    </LinearLayout>
+                    <EditText android:id="@+id/etExpInflation"
+                        android:layout_width="64dp" android:layout_height="wrap_content"
+                        android:hint="6" android:inputType="numberDecimal"
+                        android:background="@drawable/input_bg" android:padding="10dp"
+                        android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="%" android:textColor="#6B7280" android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Post-retirement return -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Post-retirement return" android:textColor="#374151" android:textSize="13sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Expected return on invested corpus" android:textColor="#9CA3AF" android:textSize="11sp" />
+                    </LinearLayout>
+                    <EditText android:id="@+id/etPostRetirementReturn"
+                        android:layout_width="64dp" android:layout_height="wrap_content"
+                        android:hint="8" android:inputType="numberDecimal"
+                        android:background="@drawable/input_bg" android:padding="10dp"
+                        android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="%" android:textColor="#6B7280" android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Current Expenses Card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+            app:cardElevation="4dp" android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="💸 Current Monthly Expenses"
+                    android:textColor="#1E40AF" android:textSize="16sp" android:textStyle="bold"
+                    android:layout_marginBottom="2dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Uncheck expenses that won't exist at retirement"
+                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="10dp" />
+
+                <!-- Column Headers -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="2.5" android:text="Expense"
+                        android:textColor="#9CA3AF" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1.8" android:text="Amount (₹)"
+                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="end"
+                        android:layout_marginEnd="4dp" />
+                    <TextView android:layout_width="40dp" android:layout_height="wrap_content"
+                        android:text="At 60?" android:textColor="#9CA3AF"
+                        android:textSize="11sp" android:gravity="center" />
+                </LinearLayout>
+
+                <!-- Expense rows container -->
+                <LinearLayout android:id="@+id/containerCurrentExpenses"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <!-- Add button -->
+                <LinearLayout android:id="@+id/btnAddCurrentExpense"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center"
+                    android:background="@drawable/add_row_bg"
+                    android:padding="10dp" android:layout_marginTop="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="+ Add expense" android:textColor="#1E40AF"
+                        android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Running total -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:background="@drawable/total_bar_blue_bg"
+                    android:padding="10dp" android:layout_marginTop="8dp" android:gravity="center_vertical">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Continuing at retirement"
+                        android:textColor="#1E40AF" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvCurrentTotal"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="₹0 / mo" android:textColor="#1E40AF"
+                        android:textSize="13sp" android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Post-Retirement Expenses Card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+            app:cardElevation="4dp" android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🏥 Post-Retirement Expenses"
+                    android:textColor="#065F46" android:textSize="16sp" android:textStyle="bold"
+                    android:layout_marginBottom="2dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="New expenses after retirement — enter in today's value"
+                    android:textColor="#6B7280" android:textSize="11sp" android:layout_marginBottom="10dp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="2.5" android:text="Expense"
+                        android:textColor="#9CA3AF" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1.8" android:text="Amount (₹)"
+                        android:textColor="#9CA3AF" android:textSize="11sp" android:gravity="end" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/containerPostExpenses"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <LinearLayout android:id="@+id/btnAddPostExpense"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center"
+                    android:background="@drawable/add_row_green_bg"
+                    android:padding="10dp" android:layout_marginTop="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="+ Add post-retirement expense" android:textColor="#065F46"
+                        android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:background="@drawable/total_bar_green_bg"
+                    android:padding="10dp" android:layout_marginTop="8dp" android:gravity="center_vertical">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Post-retirement additions"
+                        android:textColor="#065F46" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvPostTotal"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="₹0 / mo" android:textColor="#065F46"
+                        android:textSize="13sp" android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Results Card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+            app:cardElevation="6dp" android:layout_marginBottom="24dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp"
+                android:background="@drawable/header_bg">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📊 Retirement Expense Summary"
+                    android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"
+                    android:layout_marginBottom="14dp" android:layout_gravity="center_horizontal" />
+
+                <!-- Breakdown rows -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Today's continuing expenses"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvResultCurrentToday"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Post-retirement additions (today)"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvResultPostToday"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Combined today's value"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvResultCombinedToday"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="#4B72C4" android:layout_marginBottom="10dp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="14dp">
+                    <TextView android:id="@+id/tvInflationLabel"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Inflation adjusted at retirement"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvResultInflationAdjusted"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FCD34D" android:textSize="14sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Minimum corpus box -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="@drawable/corpus_box_bg"
+                    android:padding="14dp">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Minimum corpus needed at retirement"
+                        android:textColor="#BFDBFE" android:textSize="11sp"
+                        android:gravity="center" android:layout_marginBottom="2dp" />
+
+                    <TextView android:id="@+id/tvCorpusSubtitle"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:textColor="#93C5FD" android:textSize="10sp"
+                        android:gravity="center" android:layout_marginBottom="8dp" />
+
+                    <TextView android:id="@+id/tvMinCorpus"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="₹0" android:textColor="#FFFFFF"
+                        android:textSize="32sp" android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView android:id="@+id/tvCorpusNote"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:textColor="#BFDBFE" android:textSize="10sp"
+                        android:gravity="center" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
