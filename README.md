@@ -1,17 +1,35 @@
 # 🎯 Retirement Planner — Android App
 
-A financial planning app to calculate the monthly SIP contribution needed to reach your retirement corpus target.
+A financial planning app to calculate the monthly SIP contribution needed to reach your retirement corpus target, and plan your monthly expenses at retirement.
+
+---
+
+## 📸 Screenshots
+
+<p float="left">
+  <img src="app/src/main/res/drawable/screenshot1.jpeg" width="23%" />
+  <img src="app/src/main/res/drawable/screenshot2.jpeg" width="23%" />
+  <img src="app/src/main/res/drawable/screenshot3.jpeg" width="23%" />
+  <img src="app/src/main/res/drawable/screenshot4.jpeg" width="23%" />
+</p>
 
 ---
 
 ## 📱 Features
 
-- **8 Asset Inputs**: NPS, PPF, EPF, MF, Stocks, HUF Bank, HUF Stocks, HUF MF
-- **Inflation-adjusted target**: Accounts for 6% inflation over your remaining years
-- **Projected growth** per asset class at realistic rates
+- **10 Asset Inputs**: NPS, PPF, EPF, MF, Stocks, Savings Bank, Crypto, HUF Bank, HUF Stocks, HUF MF
+- **User-defined growth rates** — set your own expected return % for each asset
+- **Projected growth** per asset class with full breakdown table
 - **Gap analysis**: Shows exactly how much monthly SIP you still need
+- **Expense Planner tab** — plan your monthly expenses at retirement
+- **Minimum corpus calculator** — the exact corpus needed to never run out of money
+- **Life expectancy & post-retirement return** inputs for accurate planning
+- **Pre-filled common expenses** with checkbox to mark what continues at retirement
+- **Real-time totals** — updates as you type
+- **Auto-save** — all data saved on your phone, prefilled on next launch
 - **Configurable retirement age** (default: 60)
 - **Indian currency formatting** (Lakhs / Crores)
+- **About page** with creator info and Bitcoin donation address
 
 ---
 
@@ -96,13 +114,24 @@ RetirementPlanner/
 ├── app/
 │   ├── src/main/
 │   │   ├── java/com/retirement/planner/
-│   │   │   ├── MainActivity.java       ← Input screen
-│   │   │   └── ResultActivity.java     ← Results & calculations
+│   │   │   ├── MainActivity.java         ← Tab host (ViewPager2)
+│   │   │   ├── PortfolioFragment.java    ← Portfolio planner tab
+│   │   │   ├── ExpenseFragment.java      ← Expense planner tab
+│   │   │   ├── ResultActivity.java       ← Results & calculations
+│   │   │   └── AboutActivity.java        ← About & Bitcoin donation
 │   │   ├── res/
 │   │   │   ├── layout/
-│   │   │   │   ├── activity_main.xml   ← Input UI
-│   │   │   │   └── activity_result.xml ← Results UI
-│   │   │   ├── drawable/               ← Backgrounds & styles
+│   │   │   │   ├── activity_main.xml        ← Tab host layout
+│   │   │   │   ├── fragment_portfolio.xml   ← Portfolio tab UI
+│   │   │   │   ├── fragment_expense.xml     ← Expense tab UI
+│   │   │   │   ├── activity_result.xml      ← Results UI
+│   │   │   │   ├── activity_about.xml       ← About UI
+│   │   │   │   ├── asset_row.xml            ← Reusable asset input row
+│   │   │   │   ├── expense_row_current.xml  ← Current expense row
+│   │   │   │   ├── expense_row_post.xml     ← Post-retirement expense row
+│   │   │   │   └── table_row_breakdown.xml  ← Results table row
+│   │   │   ├── drawable/               ← Backgrounds, styles & screenshots
+│   │   │   ├── color/                  ← Color selectors (tab text)
 │   │   │   └── values/                 ← Colors, strings, themes
 │   │   └── AndroidManifest.xml
 │   └── build.gradle
