@@ -166,6 +166,12 @@ public class ExpenseFragment extends Fragment {
         etAmount.addTextChangedListener(tw);
         cb.setOnCheckedChangeListener((btn, isChecked) -> { saveExpenses(); recalculate(); });
 
+        row.findViewById(R.id.btnDeleteExpense).setOnClickListener(v -> {
+            containerCurrentExpenses.removeView(row);
+            saveExpenses();
+            recalculate();
+        });
+
         containerCurrentExpenses.addView(row);
         recalculate();
     }
@@ -181,6 +187,12 @@ public class ExpenseFragment extends Fragment {
         TextWatcher tw = new SimpleTextWatcher(() -> { saveExpenses(); recalculate(); });
         etName.addTextChangedListener(tw);
         etAmount.addTextChangedListener(tw);
+
+        row.findViewById(R.id.btnDeletePostExpense).setOnClickListener(v -> {
+            containerPostExpenses.removeView(row);
+            saveExpenses();
+            recalculate();
+        });
 
         containerPostExpenses.addView(row);
         recalculate();

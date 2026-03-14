@@ -34,9 +34,20 @@
 
     <CheckBox
         android:id="@+id/cbAtRetirement"
-        android:layout_width="40dp"
+        android:layout_width="32dp"
         android:layout_height="wrap_content"
         android:checked="true"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/btnDeleteExpense"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:text="✕"
+        android:textSize="13sp"
+        android:textColor="#EF4444"
+        android:gravity="center"
+        android:background="@drawable/delete_btn_bg"
+        android:layout_marginStart="4dp" />
 
 </LinearLayout>

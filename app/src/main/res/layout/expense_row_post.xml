@@ -29,6 +29,17 @@
         android:background="@drawable/input_bg"
         android:textSize="12sp"
         android:gravity="end"
-        android:padding="6dp" />
+        android:padding="6dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/btnDeletePostExpense"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:text="✕"
+        android:textSize="13sp"
+        android:textColor="#EF4444"
+        android:gravity="center"
+        android:background="@drawable/delete_btn_bg" />
 
 </LinearLayout>
