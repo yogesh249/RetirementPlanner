@@ -1,4 +1,24 @@
+# Gradle build outputs
 build/
 app/build/
 .gradle/
+
+# Local machine config - never push this
 local.properties
+
+# Android Studio IDE files
+.idea/
+*.iml
+captures/
+.DS_Store
+
+# Keystore files - never push these (security risk)
+*.jks
+*.keystore
+
+# Generated files
+gen/
+out/
+
+# OS files
+Thumbs.db
