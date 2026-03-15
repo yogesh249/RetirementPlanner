@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
+import com.retirement.planner.DefaultValueHelper;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -80,11 +81,11 @@ public class ExpenseFragment extends Fragment {
         tvCorpusSubtitle      = v.findViewById(R.id.tvCorpusSubtitle);
         tvCorpusNote          = v.findViewById(R.id.tvCorpusNote);
 
-        // Set defaults
-        etExpRetirementAge.setText("60");
-        etLifeExpectancy.setText("80");
-        etExpInflation.setText("6");
-        etPostRetirementReturn.setText("8");
+        // Attach defaults with gray hint behaviour
+        DefaultValueHelper.attach(etExpRetirementAge,     "60");
+        DefaultValueHelper.attach(etLifeExpectancy,       "80");
+        DefaultValueHelper.attach(etExpInflation,         "6");
+        DefaultValueHelper.attach(etPostRetirementReturn, "8");
 
         // Load saved or default expense rows
         loadOrInitExpenses();
@@ -303,10 +304,10 @@ public class ExpenseFragment extends Fragment {
     }
 
     private int getInt(EditText et, int def) {
-        try { String s = et.getText().toString().trim(); return s.isEmpty() ? def : Integer.parseInt(s); } catch (Exception e) { return def; }
+        return DefaultValueHelper.getInt(et, def);
     }
     private double getDbl(EditText et, double def) {
-        try { String s = et.getText().toString().trim(); return s.isEmpty() ? def : Double.parseDouble(s); } catch (Exception e) { return def; }
+        return DefaultValueHelper.getDouble(et, def);
     }
     private double getDblView(EditText et) {
         try { String s = et.getText().toString().trim(); return s.isEmpty() ? 0 : Double.parseDouble(s); } catch (Exception e) { return 0; }

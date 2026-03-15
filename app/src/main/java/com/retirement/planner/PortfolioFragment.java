@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import com.retirement.planner.DefaultValueHelper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -131,7 +132,7 @@ public class PortfolioFragment extends Fragment {
     private void loadSavedData() {
         SharedPreferences p = requireContext().getSharedPreferences(PREFS_NAME, 0);
         String savedDate = p.getString(KEY_SAVED_DATE, null);
-        if (savedDate == null) { prefillDefaultRates(); return; }
+        if (savedDate == null) { attachDefaults(); return; }
         bannerLastSaved.setVisibility(View.VISIBLE);
         tvLastSaved.setText("Data last saved on " + savedDate);
         etDOB.setText(p.getString(KEY_DOB, "")); etRetirementAge.setText(p.getString(KEY_RETIREMENT_AGE, "60"));
@@ -146,12 +147,42 @@ public class PortfolioFragment extends Fragment {
         etRateStocks.setText(p.getString(KEY_RATE_STOCKS, "12")); etRateSavingsBank.setText(p.getString(KEY_RATE_SAVINGS, "4"));
         etRateCrypto.setText(p.getString(KEY_RATE_CRYPTO, "20")); etRateHUFBank.setText(p.getString(KEY_RATE_HUF_BANK, "4"));
         etRateHUFStocks.setText(p.getString(KEY_RATE_HUF_STOCKS, "12")); etRateHUFMF.setText(p.getString(KEY_RATE_HUF_MF, "12"));
+        // Reattach focus listeners after loading saved data
+        attachDefaults();
     }
 
     private void prefillDefaultRates() {
-        etRateNPS.setText("10"); etRatePPF.setText("8"); etRateEPF.setText("8");
-        etRateMF.setText("12"); etRateStocks.setText("12"); etRateSavingsBank.setText("4");
-        etRateCrypto.setText("20"); etRateHUFBank.setText("4"); etRateHUFStocks.setText("12"); etRateHUFMF.setText("12");
+        attachDefaults();
+    }
+
+    private void attachDefaults() {
+        // Personal
+        DefaultValueHelper.attach(etRetirementAge, "60");
+        DefaultValueHelper.attach(etTargetCorpus,  "50000000");
+
+        // Corpus fields - default 10,000 each
+        DefaultValueHelper.attach(etNPS,         "10000");
+        DefaultValueHelper.attach(etPPF,         "10000");
+        DefaultValueHelper.attach(etEPF,         "10000");
+        DefaultValueHelper.attach(etMF,          "10000");
+        DefaultValueHelper.attach(etStocks,      "10000");
+        DefaultValueHelper.attach(etSavingsBank, "10000");
+        DefaultValueHelper.attach(etCrypto,      "10000");
+        DefaultValueHelper.attach(etHUFBank,     "10000");
+        DefaultValueHelper.attach(etHUFStocks,   "10000");
+        DefaultValueHelper.attach(etHUFMF,       "10000");
+
+        // Rate fields
+        DefaultValueHelper.attach(etRateNPS,         "10");
+        DefaultValueHelper.attach(etRatePPF,         "8");
+        DefaultValueHelper.attach(etRateEPF,         "8");
+        DefaultValueHelper.attach(etRateMF,          "12");
+        DefaultValueHelper.attach(etRateStocks,      "12");
+        DefaultValueHelper.attach(etRateSavingsBank, "4");
+        DefaultValueHelper.attach(etRateCrypto,      "20");
+        DefaultValueHelper.attach(etRateHUFBank,     "4");
+        DefaultValueHelper.attach(etRateHUFStocks,   "12");
+        DefaultValueHelper.attach(etRateHUFMF,       "12");
     }
 
     private void clearData() {
@@ -213,9 +244,9 @@ public class PortfolioFragment extends Fragment {
     }
 
     private int getInt(EditText et, int def) {
-        try { String s = et.getText().toString().trim(); return s.isEmpty() ? def : Integer.parseInt(s); } catch (Exception e) { return def; }
+        return DefaultValueHelper.getInt(et, def);
     }
     private double getDbl(EditText et, double def) {
-        try { String s = et.getText().toString().trim(); return s.isEmpty() ? def : Double.parseDouble(s); } catch (Exception e) { return def; }
+        return DefaultValueHelper.getDouble(et, def);
     }
 }

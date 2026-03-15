@@ -47,6 +47,30 @@ A financial planning app to calculate the monthly SIP contribution needed to rea
 
 ---
 
+## 📲 Install on Your Phone
+
+The APK is ready to install — no need to build anything.
+
+1. **Download the APK** directly from the link below:
+
+   👉 [Download RetirementPlanner.apk](https://github.com/yogesh249/RetirementPlanner/raw/main/RetirementPlanner.apk)
+
+2. **Allow unknown sources** on your Android phone:
+   - Go to `Settings → Security` (or `Settings → Apps → Special app access`)
+   - Enable **"Install unknown apps"** or **"Unknown sources"**
+   - On newer Android (10+): you may be prompted automatically when you tap the APK — just tap **"Allow"**
+
+3. **Open the APK file** on your phone:
+   - If you downloaded on your phone — tap the notification or find it in your Downloads folder
+   - If you downloaded on PC — transfer it via USB, WhatsApp, Google Drive, or email
+   - Tap the file to install
+
+4. **Tap Install** and you're done. 🎉
+
+> ⚠️ Android may warn "App from unknown source" — this is normal for apps not on the Play Store. The app is completely safe, open source, and the full source code is in this repository.
+
+---
+
 ## 🔨 How to Build the APK
 
 ### Prerequisites
