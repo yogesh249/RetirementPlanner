@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="6dp"
+    android:background="@drawable/property_row_bg"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/etPropertyName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:hint="Property name"
+        android:inputType="textCapSentences"
+        android:background="@android:color/transparent"
+        android:textSize="12sp"
+        android:padding="4dp" />
+
+    <EditText
+        android:id="@+id/etPropertyValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="0"
+        android:inputType="numberDecimal"
+        android:background="@drawable/input_bg"
+        android:textSize="12sp"
+        android:textColor="#7C3AED"
+        android:gravity="end"
+        android:padding="6dp"
+        android:layout_marginEnd="4dp" />
+
+    <TextView
+        android:id="@+id/btnDeleteProperty"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:text="✕"
+        android:textSize="13sp"
+        android:textColor="#EF4444"
+        android:gravity="center"
+        android:background="@drawable/delete_btn_bg" />
+
+</LinearLayout>

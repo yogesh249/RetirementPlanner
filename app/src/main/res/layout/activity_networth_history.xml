@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/screen_background">
+
+    <!-- Header -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/header_bg" android:orientation="vertical"
+        android:padding="20dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="📈 Net Worth History" android:textColor="#FFFFFF"
+            android:textSize="22sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Track your wealth over time" android:textColor="#E0E7FF"
+            android:textSize="13sp" android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- Summary bar -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="16dp"
+        android:background="@color/card_background">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Snapshots" android:textColor="@color/text_muted" android:textSize="11sp" />
+            <TextView android:id="@+id/tvSnapshotCount"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textColor="@color/text_primary"
+                android:textSize="18sp" android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="First recorded" android:textColor="@color/text_muted" android:textSize="11sp" />
+            <TextView android:id="@+id/tvFirstDate"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="—" android:textColor="@color/text_primary"
+                android:textSize="13sp" android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Overall change" android:textColor="@color/text_muted" android:textSize="11sp" />
+            <TextView android:id="@+id/tvOverallChange"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="—" android:textColor="@color/text_primary"
+                android:textSize="13sp" android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- History list -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:padding="16dp">
+        <LinearLayout android:id="@+id/containerHistory"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Empty state -->
+    <TextView android:id="@+id/tvEmptyHistory"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="No snapshots yet.\n\nTap 'Save Net Worth Snapshot' on the Portfolio screen to record your first entry."
+        android:textColor="@color/text_muted" android:textSize="14sp"
+        android:gravity="center" android:padding="32dp"
+        android:visibility="gone" />
+
+    <!-- Delete All button -->
+    <Button android:id="@+id/btnDeleteAllHistory"
+        android:layout_width="match_parent" android:layout_height="48dp"
+        android:text="🗑  Delete All History"
+        android:textSize="13sp" android:textColor="#DC2626"
+        android:background="@drawable/button_clear_bg"
+        android:layout_margin="16dp" />
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="@drawable/header_bg" android:orientation="vertical" android:padding="20dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="💾 Backup &amp; Restore" android:textColor="#FFFFFF"
+                android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Export your data to keep it safe" android:textColor="#E0E7FF"
+                android:textSize="13sp" android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Export Card -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+                app:cardElevation="4dp" android:layout_marginBottom="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="📤 Export Backup" android:textColor="@color/total_blue_text"
+                        android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Exports all your portfolio data and net worth history as a JSON file. You can then upload it to Google Drive, send via WhatsApp, or email it to yourself."
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:lineSpacingExtra="3dp" android:layout_marginBottom="16dp" />
+
+                    <TextView android:id="@+id/tvLastBackupDate"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="No backup created yet" android:textColor="@color/text_muted"
+                        android:textSize="11sp" android:layout_marginBottom="12dp" />
+
+                    <Button android:id="@+id/btnExport"
+                        android:layout_width="match_parent" android:layout_height="52dp"
+                        android:text="📤  Export to File"
+                        android:textSize="14sp" android:textStyle="bold"
+                        android:background="@drawable/button_bg"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Restore Card -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+                app:cardElevation="4dp" android:layout_marginBottom="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="📥 Restore from Backup" android:textColor="#065F46"
+                        android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Select a previously exported JSON backup file to restore all your data. This will overwrite your current data."
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:lineSpacingExtra="3dp" android:layout_marginBottom="16dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:background="@drawable/banner_bg"
+                        android:padding="12dp" android:layout_marginBottom="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="⚠️ " android:textSize="14sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Restoring will replace ALL current data including net worth history."
+                            android:textColor="@color/banner_text" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <Button android:id="@+id/btnImport"
+                        android:layout_width="match_parent" android:layout_height="52dp"
+                        android:text="📥  Restore from File"
+                        android:textSize="14sp" android:textStyle="bold"
+                        android:background="@drawable/button_snapshot_bg"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- How to use card -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+                app:cardElevation="4dp" android:layout_marginBottom="24dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="ℹ️ How to backup to Google Drive"
+                        android:textColor="@color/total_blue_text" android:textSize="14sp"
+                        android:textStyle="bold" android:layout_marginBottom="10dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="1. Tap Export to File above\n2. Choose to save or share the file\n3. Open Google Drive on your phone\n4. Upload the exported .json file\n\nTo restore on a new phone:\n1. Download the .json file from Google Drive\n2. Open this app → Backup &amp; Restore\n3. Tap Restore from File and select the file"
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
