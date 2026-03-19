@@ -146,24 +146,40 @@ public class BackupRestoreActivity extends AppCompatActivity {
                 while (expKeys.hasNext()) {
                     String key = expKeys.next();
                     Object val = expData.get(key);
-                    if (val instanceof String)  expEditor.putString(key, (String) val);
-                    else if (val instanceof Integer) expEditor.putInt(key, (Integer) val);
-                    else if (val instanceof Boolean) expEditor.putBoolean(key, (Boolean) val);
+                    if (val instanceof Boolean) {
+                        expEditor.putBoolean(key, expData.getBoolean(key));
+                    } else if (val instanceof Integer) {
+                        expEditor.putInt(key, expData.getInt(key));
+                    } else if (val instanceof Long) {
+                        expEditor.putLong(key, expData.getLong(key));
+                    } else if (val instanceof Double) {
+                        double d = expData.getDouble(key);
+                        if (d == Math.floor(d) && !Double.isInfinite(d)) {
+                            expEditor.putInt(key, (int) d);
+                        } else {
+                            expEditor.putString(key, String.valueOf(d));
+                        }
+                    } else {
+                        expEditor.putString(key, expData.optString(key, ""));
+                    }
                 }
-                expEditor.apply();
+                expEditor.commit(); // synchronous
             }
 
             Toast.makeText(this, "✅ Data restored successfully!", Toast.LENGTH_SHORT).show();
 
-            // Restart the app so all screens reload with restored data
-            android.content.Intent intent = getPackageManager()
-                    .getLaunchIntentForPackage(getPackageName());
-            if (intent != null) {
-                intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        | android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-            finish();
+            // Small delay to ensure all commit() calls have fully flushed to disk
+            new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                // Restart the app so all screens reload with restored data
+                android.content.Intent intent = getPackageManager()
+                        .getLaunchIntentForPackage(getPackageName());
+                if (intent != null) {
+                    intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            | android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+                finish();
+            }, 500); // 500ms delay — enough time for disk flush
 
         } catch (Exception e) {
             Toast.makeText(this, "Restore failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -216,11 +232,25 @@ public class BackupRestoreActivity extends AppCompatActivity {
         while (keys.hasNext()) {
             String key = keys.next();
             Object val = data.get(key);
-            if (val instanceof String)  editor.putString(key, (String) val);
-            else if (val instanceof Integer) editor.putInt(key, (Integer) val);
-            else if (val instanceof Boolean) editor.putBoolean(key, (Boolean) val);
-            else if (val instanceof Long) editor.putLong(key, (Long) val);
+            if (val instanceof Boolean) {
+                editor.putBoolean(key, data.getBoolean(key));
+            } else if (val instanceof Integer) {
+                editor.putInt(key, data.getInt(key));
+            } else if (val instanceof Long) {
+                editor.putLong(key, data.getLong(key));
+            } else if (val instanceof Double) {
+                // Double could be an integer stored as 2.0 — check if it has no fractional part
+                double d = data.getDouble(key);
+                if (d == Math.floor(d) && !Double.isInfinite(d)) {
+                    editor.putInt(key, (int) d);   // store as int e.g. prop_count
+                } else {
+                    editor.putString(key, String.valueOf(d));
+                }
+            } else {
+                // Everything else (String, null etc.) stored as String
+                editor.putString(key, data.optString(key, ""));
+            }
         }
-        editor.apply();
+        editor.commit(); // synchronous — ensures data is written before app restarts
     }
 }

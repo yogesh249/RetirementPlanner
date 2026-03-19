@@ -165,7 +165,7 @@ public class NetWorthHistoryActivity extends AppCompatActivity {
 
     public static void restoreHistoryJson(android.content.Context ctx, String json) {
         ctx.getSharedPreferences(PREFS_HISTORY, MODE_PRIVATE)
-                .edit().putString(KEY_HISTORY, json).apply();
+                .edit().putString(KEY_HISTORY, json).commit();
     }
 
     private String formatCurrency(double val) {

@@ -47,6 +47,9 @@ public class PortfolioFragment extends Fragment {
     private TextView tvInvestmentsTotal, tvDebtTotal, tvPropertyTotal;
     private TextView tvNWInvestments, tvNWProperties, tvNWLiabilities, tvNetWorth, tvNetWorthNote;
 
+    // Suppress saveData() during initial load to prevent race condition
+    private boolean isLoading = false;
+
     // Default individual asset rows: name, corpus, rate
     private static final String[][] DEFAULT_ASSETS = {
         {"NPS",          "10000", "10"},
@@ -321,6 +324,7 @@ public class PortfolioFragment extends Fragment {
     // ── SAVE / LOAD ───────────────────────────────────────────────────────────
 
     private void saveData() {
+        if (isLoading) return;  // do not save during initial load
         SharedPreferences.Editor e = requireContext()
                 .getSharedPreferences(PREFS_NAME, 0).edit();
         e.putString(KEY_SAVED_DATE, new SimpleDateFormat(
@@ -370,6 +374,7 @@ public class PortfolioFragment extends Fragment {
     }
 
     private void loadSavedData() {
+        isLoading = true;  // block saveData() during load
         SharedPreferences p = requireContext().getSharedPreferences(PREFS_NAME, 0);
         String savedDate = p.getString(KEY_SAVED_DATE, null);
 
@@ -422,13 +427,16 @@ public class PortfolioFragment extends Fragment {
                 addPropertyRow(p.getString("prop_name_" + i, ""),
                         p.getString("prop_value_" + i, "0"), false);
         }
+        isLoading = false;  // allow saveData() again
         updateNetWorth();
     }
 
     private void loadDefaultRows() {
+        isLoading = true;
         for (String[] a : DEFAULT_ASSETS)     addAssetRow(a[0], a[1], a[2], false);
         for (String[] d : DEFAULT_DEBT)       addDebtRow(d[0], d[1], false);
         for (String[] p : DEFAULT_PROPERTIES) addPropertyRow(p[0], p[1], false);
+        isLoading = false;
         updateNetWorth();
     }
 
