@@ -10,6 +10,7 @@
 
     <EditText
         android:id="@+id/etAssetName"
+        android:saveEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.6"
@@ -22,6 +23,7 @@
 
     <EditText
         android:id="@+id/etAssetCorpus"
+        android:saveEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.6"
@@ -36,6 +38,7 @@
 
     <EditText
         android:id="@+id/etAssetRate"
+        android:saveEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.7"

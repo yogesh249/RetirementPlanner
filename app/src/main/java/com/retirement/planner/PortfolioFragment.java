@@ -75,6 +75,20 @@ public class PortfolioFragment extends Fragment {
     };
 
     @Override
+    public void onPause() {
+        super.onPause();
+        // Save whenever app goes to background or screen rotates
+        if (!isLoading) saveData();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Save before view is torn down (rotation, background)
+        if (!isLoading) saveData();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_portfolio, container, false);
         initViews(v);
@@ -150,7 +164,7 @@ public class PortfolioFragment extends Fragment {
     }
 
     private void addAssetRowFull(String name, String corpus, String rate, boolean liquid, boolean isNew) {
-        addAssetRowLiquid(name, corpus, rate, false, isNew);
+        addAssetRowLiquid(name, corpus, rate, liquid, isNew);
     }
 
     private void addAssetRowLiquid(String name, String corpus, String rate, boolean liquid, boolean isNew) {
@@ -161,30 +175,33 @@ public class PortfolioFragment extends Fragment {
         EditText etCorpus = row.findViewById(R.id.etAssetCorpus);
         EditText etRate   = row.findViewById(R.id.etAssetRate);
 
+        // Set values directly — do NOT use DefaultValueHelper.attach() on dynamic rows
+        // because the focus listener closure causes all rows to mirror the last row
+        // after Android recreates the fragment from background
         etName.setText(name);
 
-        // Apply default value helper to corpus and rate
-        DefaultValueHelper.attach(etCorpus, corpus.isEmpty() ? "10000" : corpus);
-        DefaultValueHelper.attach(etRate,   rate.isEmpty()   ? "0"     : rate);
-
-        // If loading saved data, set actual value in BLACK — not gray default
         if (!corpus.isEmpty()) {
             etCorpus.setText(corpus);
             etCorpus.setTextColor(android.graphics.Color.parseColor("#111827"));
+        } else {
+            etCorpus.setHint("0");
         }
+
         if (!rate.isEmpty()) {
             etRate.setText(rate);
             etRate.setTextColor(android.graphics.Color.parseColor("#111827"));
+        } else {
+            etRate.setHint("0");
         }
 
         android.widget.CheckBox cbLiquid = row.findViewById(R.id.cbLiquid);
         if (cbLiquid != null) cbLiquid.setChecked(liquid);
-        if (cbLiquid != null) cbLiquid.setOnCheckedChangeListener((btn, checked) -> { saveData(); updateNetWorth(); });
+        if (cbLiquid != null) cbLiquid.setOnCheckedChangeListener((btn, checked) -> { if (!isLoading) { saveData(); updateNetWorth(); } });
 
-        TextWatcher tw = simpleWatcher();
-        etName.addTextChangedListener(tw);
-        etCorpus.addTextChangedListener(tw);
-        etRate.addTextChangedListener(tw);
+        // Each field gets its own independent TextWatcher — no shared closure
+        etName.addTextChangedListener(makeWatcher());
+        etCorpus.addTextChangedListener(makeWatcher());
+        etRate.addTextChangedListener(makeWatcher());
 
         row.findViewById(R.id.btnDeleteAsset).setOnClickListener(v -> {
             containerAssets.removeView(row);
@@ -219,7 +236,7 @@ public class PortfolioFragment extends Fragment {
                     etAmount.setSelection(etAmount.getText().length());
                 }
                 editing = false;
-                saveData(); updateNetWorth();
+                if (!isLoading) { saveData(); updateNetWorth(); }
             }
         });
 
@@ -228,7 +245,7 @@ public class PortfolioFragment extends Fragment {
             etAmount.setText(val);
         }
 
-        etName.addTextChangedListener(simpleWatcher());
+        etName.addTextChangedListener(makeWatcher());
 
         row.findViewById(R.id.btnDeleteDebt).setOnClickListener(v -> {
             containerDebt.removeView(row);
@@ -250,9 +267,8 @@ public class PortfolioFragment extends Fragment {
         etName.setText(name);
         etValue.setText(value.equals("0") ? "" : value);
 
-        TextWatcher tw = simpleWatcher();
-        etName.addTextChangedListener(tw);
-        etValue.addTextChangedListener(tw);
+        etName.addTextChangedListener(makeWatcher());
+        etValue.addTextChangedListener(makeWatcher());
 
         row.findViewById(R.id.btnDeleteProperty).setOnClickListener(v -> {
             containerProperties.removeView(row);
@@ -314,7 +330,7 @@ public class PortfolioFragment extends Fragment {
         double total = 0;
         for (int i = 0; i < containerAssets.getChildCount(); i++) {
             View row = containerAssets.getChildAt(i);
-            total += DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetCorpus), 10000);
+            total += parseDouble(row.findViewById(R.id.etAssetCorpus), 0);
         }
         return total;
     }
@@ -325,7 +341,7 @@ public class PortfolioFragment extends Fragment {
             View row = containerAssets.getChildAt(i);
             android.widget.CheckBox cb = row.findViewById(R.id.cbLiquid);
             if (cb != null && cb.isChecked()) {
-                total += DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetCorpus), 0);
+                total += parseDouble(row.findViewById(R.id.etAssetCorpus), 0);
             }
         }
         return total;
@@ -411,6 +427,11 @@ public class PortfolioFragment extends Fragment {
 
     private void loadSavedData() {
         isLoading = true;  // block saveData() during load
+        // Clear all dynamic containers before repopulating
+        // prevents double rows on rotation/recreation
+        containerAssets.removeAllViews();
+        containerDebt.removeAllViews();
+        containerProperties.removeAllViews();
         SharedPreferences p = requireContext().getSharedPreferences(PREFS_NAME, 0);
         String savedDate = p.getString(KEY_SAVED_DATE, null);
 
@@ -562,8 +583,8 @@ public class PortfolioFragment extends Fragment {
         for (int idx = 0; idx < count; idx++) {
             View row = containerAssets.getChildAt(idx);
             names[idx]   = ((android.widget.EditText) row.findViewById(R.id.etAssetName)).getText().toString().trim();
-            corpora[idx] = DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetCorpus), 10000);
-            rates[idx]   = DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetRate), 0);
+            corpora[idx] = parseDouble(row.findViewById(R.id.etAssetCorpus), 0);
+            rates[idx]   = parseDouble(row.findViewById(R.id.etAssetRate), 0);
         }
         // Append fixed HUF rows
         names[count]     = "HUF Bank";
@@ -595,15 +616,30 @@ public class PortfolioFragment extends Fragment {
     }
 
     private TextWatcher simpleWatcher() {
+        return makeWatcher();
+    }
+
+    // Creates a fresh independent TextWatcher — never share one instance across fields
+    private TextWatcher makeWatcher() {
         return new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int st, int c, int a) {}
             public void onTextChanged(CharSequence s, int st, int b, int c) {}
-            public void afterTextChanged(Editable s) { saveData(); updateNetWorth(); }
+            public void afterTextChanged(Editable s) {
+                if (!isLoading) { saveData(); updateNetWorth(); }
+            }
         };
     }
 
     private double getDbl(EditText et, double def) {
         return DefaultValueHelper.getDouble(et, def);
+    }
+
+    /** Read double directly from text — no color check, for dynamic rows */
+    private double parseDouble(EditText et, double def) {
+        try {
+            String s = et.getText().toString().trim();
+            return s.isEmpty() ? def : Double.parseDouble(s);
+        } catch (Exception e) { return def; }
     }
 
     private String formatCurrency(double val) {

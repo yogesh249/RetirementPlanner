@@ -10,6 +10,7 @@
 
     <EditText
         android:id="@+id/etPropertyName"
+        android:saveEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2.5"
@@ -21,6 +22,7 @@
 
     <EditText
         android:id="@+id/etPropertyValue"
+        android:saveEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"

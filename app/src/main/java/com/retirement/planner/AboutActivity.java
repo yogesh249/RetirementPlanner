@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +19,16 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_about);  // ← always first
+
+        // Read version dynamically
+        try {
+            String version = getPackageManager()
+                    .getPackageInfo(getPackageName(), 0).versionName;
+            ((TextView) findViewById(R.id.tvVersion)).setText(version);
+        } catch (Exception e) {
+            ((TextView) findViewById(R.id.tvVersion)).setText("—");
+        }
 
         // Copy Bitcoin address to clipboard
         Button btnCopy = findViewById(R.id.btnCopyBitcoin);
