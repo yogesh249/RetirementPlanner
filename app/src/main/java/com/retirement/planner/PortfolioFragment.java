@@ -44,6 +44,7 @@ public class PortfolioFragment extends Fragment {
 
     // Dynamic containers
     private LinearLayout containerAssets, containerDebt, containerProperties;
+    private TextView tvLiquidAssets, tvLiquidNetWorth;
     private TextView tvInvestmentsTotal, tvDebtTotal, tvPropertyTotal;
     private TextView tvNWInvestments, tvNWProperties, tvNWLiabilities, tvNetWorth, tvNetWorthNote;
 
@@ -122,6 +123,8 @@ public class PortfolioFragment extends Fragment {
         tvInvestmentsTotal  = v.findViewById(R.id.tvInvestmentsTotal);
         tvDebtTotal         = v.findViewById(R.id.tvDebtTotal);
         tvPropertyTotal     = v.findViewById(R.id.tvPropertyTotal);
+        tvLiquidAssets      = v.findViewById(R.id.tvLiquidAssets);
+        tvLiquidNetWorth    = v.findViewById(R.id.tvLiquidNetWorth);
         tvNWInvestments     = v.findViewById(R.id.tvNWInvestments);
         tvNWProperties      = v.findViewById(R.id.tvNWProperties);
         tvNWLiabilities     = v.findViewById(R.id.tvNWLiabilities);
@@ -143,6 +146,14 @@ public class PortfolioFragment extends Fragment {
     // ── DYNAMIC ASSET ROWS ────────────────────────────────────────────────────
 
     private void addAssetRow(String name, String corpus, String rate, boolean isNew) {
+        addAssetRowFull(name, corpus, rate, false, isNew);
+    }
+
+    private void addAssetRowFull(String name, String corpus, String rate, boolean liquid, boolean isNew) {
+        addAssetRowLiquid(name, corpus, rate, false, isNew);
+    }
+
+    private void addAssetRowLiquid(String name, String corpus, String rate, boolean liquid, boolean isNew) {
         View row = LayoutInflater.from(requireContext())
                 .inflate(R.layout.portfolio_asset_row, containerAssets, false);
 
@@ -165,6 +176,10 @@ public class PortfolioFragment extends Fragment {
             etRate.setText(rate);
             etRate.setTextColor(android.graphics.Color.parseColor("#111827"));
         }
+
+        android.widget.CheckBox cbLiquid = row.findViewById(R.id.cbLiquid);
+        if (cbLiquid != null) cbLiquid.setChecked(liquid);
+        if (cbLiquid != null) cbLiquid.setOnCheckedChangeListener((btn, checked) -> { saveData(); updateNetWorth(); });
 
         TextWatcher tw = simpleWatcher();
         etName.addTextChangedListener(tw);
@@ -275,12 +290,19 @@ public class PortfolioFragment extends Fragment {
         double totalProperty = sumProperties();
         double netWorth      = totalInvest + totalProperty + totalDebt;
 
+        double liquidAssets    = sumLiquidAssets();
+        double liquidNetWorth  = liquidAssets + totalDebt; // debt is negative
+
         tvInvestmentsTotal.setText(formatCurrency(totalInvest));
         tvDebtTotal.setText(formatCurrency(totalDebt));
         tvPropertyTotal.setText(formatCurrency(totalProperty));
         tvNWInvestments.setText(formatCurrency(totalInvest));
         tvNWProperties.setText(formatCurrency(totalProperty));
         tvNWLiabilities.setText(formatCurrency(totalDebt));
+        tvLiquidAssets.setText(formatCurrency(liquidAssets));
+        tvLiquidNetWorth.setText(formatCurrency(liquidNetWorth));
+        tvLiquidNetWorth.setTextColor(liquidNetWorth >= 0 ?
+                Color.parseColor("#4ADE80") : Color.parseColor("#FCA5A5"));
         tvNetWorth.setText(formatCurrency(netWorth));
         tvNetWorth.setTextColor(netWorth >= 0 ?
                 Color.parseColor("#4ADE80") : Color.parseColor("#FCA5A5"));
@@ -293,6 +315,18 @@ public class PortfolioFragment extends Fragment {
         for (int i = 0; i < containerAssets.getChildCount(); i++) {
             View row = containerAssets.getChildAt(i);
             total += DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetCorpus), 10000);
+        }
+        return total;
+    }
+
+    private double sumLiquidAssets() {
+        double total = 0;
+        for (int i = 0; i < containerAssets.getChildCount(); i++) {
+            View row = containerAssets.getChildAt(i);
+            android.widget.CheckBox cb = row.findViewById(R.id.cbLiquid);
+            if (cb != null && cb.isChecked()) {
+                total += DefaultValueHelper.getDouble(row.findViewById(R.id.etAssetCorpus), 0);
+            }
         }
         return total;
     }
@@ -351,6 +385,8 @@ public class PortfolioFragment extends Fragment {
             e.putString("asset_name_" + i,   ((EditText) row.findViewById(R.id.etAssetName)).getText().toString());
             e.putString("asset_corpus_" + i, etC.getText().toString().trim());
             e.putString("asset_rate_" + i,   etR.getText().toString().trim());
+            android.widget.CheckBox cb = row.findViewById(R.id.cbLiquid);
+            e.putBoolean("asset_liquid_" + i, cb != null && cb.isChecked());
         }
 
         // Debt rows
@@ -405,9 +441,10 @@ public class PortfolioFragment extends Fragment {
             for (String[] a : DEFAULT_ASSETS) addAssetRow(a[0], a[1], a[2], false);
         } else {
             for (int i = 0; i < ac; i++)
-                addAssetRow(p.getString("asset_name_" + i, ""),
+                addAssetRowLiquid(p.getString("asset_name_" + i, ""),
                         p.getString("asset_corpus_" + i, ""),
-                        p.getString("asset_rate_" + i, ""), false);
+                        p.getString("asset_rate_" + i, ""),
+                        p.getBoolean("asset_liquid_" + i, false), false);
         }
         // Always load debt and properties independently
         int dc = p.getInt("debt_count", -1);

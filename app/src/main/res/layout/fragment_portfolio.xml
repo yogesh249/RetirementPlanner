@@ -86,16 +86,20 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:layout_marginBottom="6dp">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1.8" android:text="Asset"
+                        android:layout_weight="1.6" android:text="Asset"
                         android:textColor="@color/text_muted" android:textSize="11sp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1.8" android:text="Corpus (₹)"
+                        android:layout_weight="1.6" android:text="Corpus (₹)"
                         android:textColor="@color/text_muted" android:textSize="11sp"
                         android:gravity="end" android:layout_marginEnd="4dp" />
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="0.8" android:text="Rate %"
+                        android:layout_weight="0.7" android:text="Rate %"
                         android:textColor="@color/text_muted" android:textSize="11sp"
                         android:gravity="center" android:layout_marginEnd="4dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Liq?" android:textColor="@color/text_muted"
+                        android:textSize="11sp" android:gravity="center"
+                        android:layout_marginEnd="4dp" android:minWidth="40dp" />
                     <TextView android:layout_width="28dp" android:layout_height="wrap_content" android:text="" />
                 </LinearLayout>
 
@@ -321,6 +325,30 @@
                 <View android:layout_width="match_parent" android:layout_height="1dp"
                     android:background="#4B72C4" android:layout_marginBottom="10dp" />
 
+                <!-- Liquid assets row -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="💧 Liquid assets"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvLiquidAssets"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="💧 Liquid net worth"
+                        android:textColor="#93C5FD" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvLiquidNetWorth"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#4ADE80" android:textSize="12sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="#4B72C4" android:layout_marginBottom="10dp" />
+
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Your Net Worth" android:textColor="#BFDBFE"
                     android:textSize="12sp" android:gravity="center" android:layout_marginBottom="4dp" />
@@ -334,6 +362,8 @@
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:textColor="#BFDBFE" android:textSize="10sp"
                     android:gravity="center" android:layout_marginTop="4dp" />
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
