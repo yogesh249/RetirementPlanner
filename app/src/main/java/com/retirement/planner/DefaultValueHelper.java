@@ -13,9 +13,14 @@ import android.widget.EditText;
  */
 public class DefaultValueHelper {
 
-    private static final int COLOR_DEFAULT = Color.parseColor("#9CA3AF"); // gray
-    private static final int COLOR_USER    = Color.parseColor("#111827"); // near black
 
+    // REPLACE with these two helper methods:
+    private static int colorDefault(EditText et) {
+        return com.google.android.material.color.MaterialColors.getColor(et, android.R.attr.textColorHint);
+    }
+    private static int colorUser(EditText et) {
+        return com.google.android.material.color.MaterialColors.getColor(et, android.R.attr.textColorPrimary);
+    }
     /**
      * Attach to an EditText with a numeric string default.
      */
@@ -29,9 +34,9 @@ public class DefaultValueHelper {
             String current = et.getText().toString().trim();
             if (hasFocus) {
                 // User tapped — clear the gray default so they can type freely
-                if (current.equals(defaultValue) && et.getCurrentTextColor() == COLOR_DEFAULT) {
+                if (current.equals(defaultValue) && et.getCurrentTextColor() == colorDefault(et)) {
                     et.setText("");
-                    et.setTextColor(COLOR_USER);
+                    et.setTextColor(colorUser(et));
                 }
             } else {
                 // User left — if empty, restore gray default
@@ -44,7 +49,7 @@ public class DefaultValueHelper {
 
     private static void showDefault(EditText et, String defaultValue) {
         et.setText(defaultValue);
-        et.setTextColor(COLOR_DEFAULT);
+        et.setTextColor(colorDefault(et));
     }
 
     /**
@@ -54,7 +59,7 @@ public class DefaultValueHelper {
         String text = et.getText().toString().trim();
         if (text.isEmpty()) return defaultValue;
         // If showing gray default, use default value
-        if (et.getCurrentTextColor() == COLOR_DEFAULT) return defaultValue;
+        if (et.getCurrentTextColor() == colorDefault(et)) return defaultValue;
         try { return Double.parseDouble(text); }
         catch (Exception e) { return defaultValue; }
     }
@@ -65,7 +70,7 @@ public class DefaultValueHelper {
     public static int getInt(EditText et, int defaultValue) {
         String text = et.getText().toString().trim();
         if (text.isEmpty()) return defaultValue;
-        if (et.getCurrentTextColor() == COLOR_DEFAULT) return defaultValue;
+        if (et.getCurrentTextColor() == colorDefault(et)) return defaultValue;
         try { return Integer.parseInt(text); }
         catch (Exception e) { return defaultValue; }
     }
@@ -74,7 +79,7 @@ public class DefaultValueHelper {
      * Returns the raw string value — empty string if showing gray default.
      */
     public static String getString(EditText et) {
-        if (et.getCurrentTextColor() == COLOR_DEFAULT) return "";
+        if (et.getCurrentTextColor() == colorDefault(et)) return "";
         return et.getText().toString().trim();
     }
 
@@ -82,6 +87,6 @@ public class DefaultValueHelper {
      * Returns true if the field is showing the gray default (not user-entered).
      */
     public static boolean isDefault(EditText et) {
-        return et.getCurrentTextColor() == COLOR_DEFAULT;
+        return et.getCurrentTextColor() == colorDefault(et);
     }
 }

@@ -182,14 +182,14 @@ public class PortfolioFragment extends Fragment {
 
         if (!corpus.isEmpty()) {
             etCorpus.setText(corpus);
-            etCorpus.setTextColor(android.graphics.Color.parseColor("#111827"));
+            etCorpus.setTextColor(com.google.android.material.color.MaterialColors.getColor(etCorpus, android.R.attr.textColorPrimary));
         } else {
             etCorpus.setHint("0");
         }
 
         if (!rate.isEmpty()) {
             etRate.setText(rate);
-            etRate.setTextColor(android.graphics.Color.parseColor("#111827"));
+            etCorpus.setTextColor(com.google.android.material.color.MaterialColors.getColor(etCorpus, android.R.attr.textColorPrimary));
         } else {
             etRate.setHint("0");
         }
@@ -445,6 +445,8 @@ public class PortfolioFragment extends Fragment {
         tvLastSaved.setText("Data last saved on " + savedDate);
 
         etDOB.setText(p.getString(KEY_DOB, ""));
+        etDOB.setTextColor(com.google.android.material.color.MaterialColors.getColor(etDOB, android.R.attr.textColorPrimary));
+
         setUserText(etRetirementAge,  p.getString(KEY_RETIREMENT_AGE, ""));
         setUserText(etTargetCorpus,   p.getString(KEY_TARGET, ""));
         setUserText(etHUFBank,        p.getString("huf_bank", ""));
@@ -530,10 +532,12 @@ public class PortfolioFragment extends Fragment {
 
     private void setupDatePicker() {
         etDOB.setFocusable(false); etDOB.setClickable(true);
+        etDOB.setTextColor(com.google.android.material.color.MaterialColors.getColor(etDOB, android.R.attr.textColorPrimary));
+
         etDOB.setOnClickListener(v -> {
             Calendar cal = Calendar.getInstance();
             new DatePickerDialog(requireContext(), (view, y, m, d) ->
-                etDOB.setText(String.format("%02d/%02d/%04d", d, m + 1, y)),
+                etDOB.setText( String.format("%02d/%02d/%04d", d, m + 1, y)),
                 cal.get(Calendar.YEAR) - 30, cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)) {{
                 getDatePicker().setMaxDate(System.currentTimeMillis());
@@ -611,7 +615,7 @@ public class PortfolioFragment extends Fragment {
     private void setUserText(EditText et, String value) {
         if (value != null && !value.isEmpty()) {
             et.setText(value);
-            et.setTextColor(android.graphics.Color.parseColor("#111827"));
+            et.setTextColor(com.google.android.material.color.MaterialColors.getColor(et, android.R.attr.textColorPrimary));
         }
     }
 

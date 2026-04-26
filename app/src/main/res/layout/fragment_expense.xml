@@ -33,6 +33,8 @@
                     <EditText android:id="@+id/etExpRetirementAge"
                         android:layout_width="64dp" android:layout_height="wrap_content"
                         android:hint="60" android:inputType="number"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -49,6 +51,8 @@
                     <EditText android:id="@+id/etLifeExpectancy"
                         android:layout_width="64dp" android:layout_height="wrap_content"
                         android:hint="80" android:inputType="number"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -70,6 +74,8 @@
                     <EditText android:id="@+id/etExpInflation"
                         android:layout_width="64dp" android:layout_height="wrap_content"
                         android:hint="6" android:inputType="numberDecimal"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
                         android:background="@drawable/input_bg" android:padding="10dp"
                         android:textSize="13sp" android:gravity="center" android:layout_marginEnd="6dp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
